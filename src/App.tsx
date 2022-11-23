@@ -18,19 +18,18 @@ enum Answer {
 }
 
 function App() {
-    const ROWS = 15;
-
-    let initialBoxState = [];
-
-    for (let i = 0; i < ROWS; i++) {
-        initialBoxState.push(new BoxRow(Math.floor(Math.random() * 3)));
-    }
-
-    const [boxState, setBoxState] = React.useState(initialBoxState);
     const [answer, setAnswer] = React.useState<Answer | undefined>(undefined);
+    const [rowsCount, setRowsCount] = React.useState<number>(20);
 
-    let boxesInAllRowsSelected = true;
-    let allEmptyBoxesOpened = true;
+    const [boxState, setBoxState] = React.useState<BoxRow[]>([]);
+
+    React.useEffect(() => {
+        let initialBoxState = [];
+        for (let i = 0; i < rowsCount; i++) {
+            initialBoxState.push(new BoxRow(Math.floor(Math.random() * 3)));
+        }
+        setBoxState(initialBoxState);
+    }, [rowsCount]);
 
     const selectBox = (boxRow: number, selectedIndex: number) => {
         if (boxState[boxRow].emptyBoxIndex === undefined) {
@@ -39,6 +38,9 @@ function App() {
             setBoxState(newBoxState);
         }
     }
+
+    let boxesInAllRowsSelected = true;
+    let allEmptyBoxesOpened = true;
 
     boxState.forEach(value => {
         boxesInAllRowsSelected = boxesInAllRowsSelected && value.selectedIndex != null;
@@ -89,7 +91,7 @@ function App() {
             className={"doors-row-name"}>Row {rowIndex + 1}:</span> {row} <span></span></div>);
     }
 
-    const selectAnswer = function (newAnswer: Answer) {
+    const selectAnswer = (newAnswer: Answer) => {
         if (answer === undefined) {
             setAnswer(newAnswer);
 
@@ -126,24 +128,27 @@ function App() {
         }
     }
 
-    const openOneEmptyBox = function () {
-        let newBoxState = [...boxState];
+    const openOneEmptyBox = () => {
+        if (!allEmptyBoxesOpened) {
+            let newBoxState = [...boxState];
 
-        for (let rowIndex = 0; rowIndex < newBoxState.length; rowIndex++) {
-            newBoxState[rowIndex].emptyBoxIndex = newBoxState[rowIndex].prizeIndex;
+            for (let rowIndex = 0; rowIndex < newBoxState.length; rowIndex++) {
+                newBoxState[rowIndex].emptyBoxIndex = newBoxState[rowIndex].prizeIndex;
 
-            while (newBoxState[rowIndex].emptyBoxIndex === newBoxState[rowIndex].selectedIndex || newBoxState[rowIndex].emptyBoxIndex === newBoxState[rowIndex].prizeIndex) {
-                newBoxState[rowIndex].emptyBoxIndex = Math.floor(Math.random() * 3);
+                while (newBoxState[rowIndex].emptyBoxIndex === newBoxState[rowIndex].selectedIndex || newBoxState[rowIndex].emptyBoxIndex === newBoxState[rowIndex].prizeIndex) {
+                    newBoxState[rowIndex].emptyBoxIndex = Math.floor(Math.random() * 3);
+                }
             }
-        }
 
-        setBoxState(newBoxState);
+            setBoxState(newBoxState);
+        }
     }
 
     let step2 = boxesInAllRowsSelected ?
         <div className={"instructions"}>
             <div className={"instruction"}>So far your odds of winning are completely random.</div>
-            <div className={"instruction bold underline"}>To make this challenge more interesting, we will remove one box
+            <div className={"instruction bold underline"}>To make this challenge more interesting, we will remove one
+                box
                 without the prize in every row.
             </div>
             <div className={"question-option " + (allEmptyBoxesOpened ? "disabled" : "")}
@@ -194,8 +199,31 @@ function App() {
 
         }
 
-        result = <div
-            className={"result " + (answer === Answer.CHANGE_TO_THE_OTHER_BOX ? "win" : "lose")}>{result}</div>;
+        result = <>
+            <div
+                className={"result " + (answer === Answer.CHANGE_TO_THE_OTHER_BOX ? "win" : "lose")}>{result}</div>
+            <div className={"instructions center"}>
+                <a target={"_blank"} href={"https://en.wikipedia.org/wiki/Monty_Hall_problem"}
+                   className={"instruction bold underline"}>Read
+                    why on Wikipedia</a>
+            </div>
+        </>;
+    }
+
+    const random = () => {
+        if (!allEmptyBoxesOpened) {
+            let newBoxState = [...boxState];
+
+            for (let rowIndex = 0; rowIndex < newBoxState.length; rowIndex++) {
+                newBoxState[rowIndex].selectedIndex = Math.floor(Math.random() * 3);
+            }
+
+            setBoxState(newBoxState);
+        }
+    }
+
+    const updateRowsCount = (event: any) => {
+        setRowsCount(parseInt(event.target.value));
     }
 
     return <div className={"page"}>
@@ -206,9 +234,20 @@ function App() {
             </div>
             <div className={"instructions-container"}>
                 <div className={"instructions"}>
-                    <div className={"instruction"}>There is a $100.000 💵 prize hidden in every row.
+                    <div className={"instruction"}>There is a $100.000 💵 prize hidden in every row.</div>
+                    <div className={"instruction"}>
+                        <span>Number of rows:</span>
+                        <select onChange={(e) => updateRowsCount(e)} value={rowsCount}>
+                            <option value={20}>20</option>
+                            <option value={50}>50</option>
+                            <option value={100}>100</option>
+                            <option value={500}>500</option>
+                            <option value={1000}>1000</option>
+                        </select></div>
+                    <div className={"instruction bold"}>Select one white box in every row</div>
+                    <div className={"instruction bold hoverable"} onClick={() => random()}>or click here to select
+                        randomly.
                     </div>
-                    <div className={"instruction bold underline"}>Select one white box in every row.</div>
                 </div>
                 {step2}
                 {step3}

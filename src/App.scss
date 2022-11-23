@@ -39,6 +39,10 @@
   background: #FF6961;
 }
 
+.instructions.center {
+  align-items: center;
+}
+
 .instructions {
   width: 500px;
   display: flex;
@@ -49,6 +53,16 @@
     display: flex;
     margin-top: 20px;
     font-size: 22px;
+    color: white;
+
+    select {
+      margin-left: 10px;
+    }
+  }
+
+  .instruction.hoverable:hover {
+    text-decoration: underline;
+    cursor: pointer;
   }
 
   .instruction.bold {
