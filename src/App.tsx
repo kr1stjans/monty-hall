@@ -196,7 +196,11 @@ function App() {
                 }
                 break;
             case Answer.CHANGE_TO_THE_OTHER_BOX:
-                result = `Congratulations, you chose correct! You won $${new Intl.NumberFormat('de-DE').format(won * 100000)} ($${new Intl.NumberFormat('de-DE').format((won - lost) * 100000)} more, because you changed boxes)!`;
+                if (won === lost) {
+                    result = `Congratulations, you chose correct! You are statistically more likely to win if you change the boxes, however in this case, it was the same. You won $${new Intl.NumberFormat('de-DE').format(won * 100000)}).`;
+                } else {
+                    result = `Congratulations, you chose correct! You won $${new Intl.NumberFormat('de-DE').format(won * 100000)} ($${new Intl.NumberFormat('de-DE').format((won - lost) * 100000)} more, because you changed boxes)!`;
+                }
                 break;
 
         }
