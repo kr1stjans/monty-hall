@@ -204,7 +204,7 @@ function App() {
                 className={"result " + (answer === Answer.CHANGE_TO_THE_OTHER_BOX ? "win" : "lose")}>{result}</div>
             <div className={"instructions center"}>
                 <a target={"_blank"} href={"https://en.wikipedia.org/wiki/Monty_Hall_problem"}
-                   className={"instruction bold underline"}>Read
+                   rel="noreferrer" className={"instruction bold underline"}>Read
                     why on Wikipedia</a>
             </div>
         </>;
