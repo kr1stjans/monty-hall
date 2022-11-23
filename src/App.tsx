@@ -196,9 +196,9 @@ function App() {
                 break;
             case Answer.CHANGE_TO_THE_OTHER_BOX:
                 if (won <= lost) {
-                    result = `Congratulations, you chose correct! You are statistically more likely to win if you change the boxes, however in this specific small sample size the opposite happened. You won $${new Intl.NumberFormat('de-DE').format(won * 100000)}).`;
+                    result = `Congratulations, you chose correct! You are statistically more likely to win if you change the boxes, however in this specific small sample size (${rowsCount} rows) the opposite happened. You won $${new Intl.NumberFormat('de-DE').format(won * 100000)}.`;
                 } else {
-                    result = `Congratulations, you chose correct! You won $${new Intl.NumberFormat('de-DE').format(won * 100000)} ($${new Intl.NumberFormat('de-DE').format((won - lost) * 100000)} more, because you changed boxes!`;
+                    result = `Congratulations, you chose correct! You won $${new Intl.NumberFormat('de-DE').format(won * 100000)} ($${new Intl.NumberFormat('de-DE').format((won - lost) * 100000)} more, because you changed boxes)!`;
                 }
                 break;
         }
