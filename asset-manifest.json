@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "https://kr1stjans.github.io/monty-hall/static/css/main.2dff9cf8.css",
-    "main.js": "https://kr1stjans.github.io/monty-hall/static/js/main.2a0a0214.js",
+    "main.css": "https://kr1stjans.github.io/monty-hall/static/css/main.0c6fd9fb.css",
+    "main.js": "https://kr1stjans.github.io/monty-hall/static/js/main.02d71f21.js",
     "static/js/787.c615427f.chunk.js": "https://kr1stjans.github.io/monty-hall/static/js/787.c615427f.chunk.js",
     "index.html": "https://kr1stjans.github.io/monty-hall/index.html",
-    "main.2dff9cf8.css.map": "https://kr1stjans.github.io/monty-hall/static/css/main.2dff9cf8.css.map",
-    "main.2a0a0214.js.map": "https://kr1stjans.github.io/monty-hall/static/js/main.2a0a0214.js.map",
+    "main.0c6fd9fb.css.map": "https://kr1stjans.github.io/monty-hall/static/css/main.0c6fd9fb.css.map",
+    "main.02d71f21.js.map": "https://kr1stjans.github.io/monty-hall/static/js/main.02d71f21.js.map",
     "787.c615427f.chunk.js.map": "https://kr1stjans.github.io/monty-hall/static/js/787.c615427f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2dff9cf8.css",
-    "static/js/main.2a0a0214.js"
+    "static/css/main.0c6fd9fb.css",
+    "static/js/main.02d71f21.js"
   ]
 }
