@@ -143,11 +143,11 @@ function App() {
     let step2 = boxesInAllRowsSelected ?
         <div className={"instructions"}>
             <div className={"instruction"}>So far your odds of winning are completely random.</div>
-            <div className={"instruction bold underline"}>To make this challenge more interesting, we will hide one box
+            <div className={"instruction bold underline"}>To make this challenge more interesting, we will remove one box
                 without the prize in every row.
             </div>
             <div className={"question-option " + (allEmptyBoxesOpened ? "disabled" : "")}
-                 onClick={() => openOneEmptyBox()}>Click to hide one empty box in every row
+                 onClick={() => openOneEmptyBox()}>Click to remove one empty box in every row
             </div>
         </div> : <></>;
 
