@@ -195,18 +195,17 @@ function App() {
                 }
                 break;
             case Answer.CHANGE_TO_THE_OTHER_BOX:
-                if (won === lost) {
-                    result = `Congratulations, you chose correct! You are statistically more likely to win if you change the boxes, however in this case, it was the same. You won $${new Intl.NumberFormat('de-DE').format(won * 100000)}).`;
+                if (won <= lost) {
+                    result = `Congratulations, you chose correct! You are statistically more likely to win if you change the boxes, however in this specific small sample size the opposite happened. You won $${new Intl.NumberFormat('de-DE').format(won * 100000)}).`;
                 } else {
                     result = `Congratulations, you chose correct! You won $${new Intl.NumberFormat('de-DE').format(won * 100000)} ($${new Intl.NumberFormat('de-DE').format((won - lost) * 100000)} more, because you changed boxes!`;
                 }
                 break;
-
         }
 
         result = <>
             <div
-                className={"result " + (answer === Answer.CHANGE_TO_THE_OTHER_BOX ? "win" : "lose")}>{result}</div>
+                className={"result " + (answer === Answer.CHANGE_TO_THE_OTHER_BOX ? "win" : "lose")}>{result} Try to increase the number of rows at the top of the page.</div>
             <div className={"instructions center"}>
                 <a target={"_blank"} href={"https://en.wikipedia.org/wiki/Monty_Hall_problem"}
                    rel="noreferrer" className={"instruction bold underline"}>Read
