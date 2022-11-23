@@ -146,10 +146,7 @@ function App() {
     let step2 = boxesInAllRowsSelected ?
         <div className={"instructions"}>
             <div className={"instruction"}>So far your odds of winning are completely random.</div>
-            <div className={"instruction bold underline"}>To make this challenge more interesting, we will remove one
-                box
-                without the prize in every row.
-            </div>
+            <div className={"instruction bold underline"}>To make this challenge easier for you, we will remove one empty box (in every row).</div>
             <div className={"question-option " + (allEmptyBoxesOpened ? "disabled" : "")}
                  onClick={() => openOneEmptyBox()}>Click to remove one empty box in every row
             </div>
@@ -160,7 +157,7 @@ function App() {
             You are now given a choice.
         </div>
         <div className={"instruction bold underline"}>
-            Would you like to change your selected box to the other box (in every row)?
+            Would you like to change your selected box to the other remaining box (in every row)?
         </div>
         <div className={"instruction"}>
             Choose wisely!
@@ -189,14 +186,14 @@ function App() {
             case Answer.DOESNT_MATTER:
             case Answer.KEEP_THE_SAME:
                 if (won >= lost) {
-                    result = `You got lucky and won $${new Intl.NumberFormat('de-DE').format(won * 100000)}, however you are statistically less likely to win, if you keep the same boxes!`;
+                    result = `You got lucky and won $${new Intl.NumberFormat('de-DE').format(won * 100000)}, however you are statistically 33% less likely to win, if you keep the same boxes!`;
                 } else {
                     result = `💩 Poop, you should have changed to the other boxes! You could have won $${new Intl.NumberFormat('de-DE').format(lost * 100000)} if you changed boxes, but now you only won ${new Intl.NumberFormat('de-DE').format(won * 100000)}! 💩`;
                 }
                 break;
             case Answer.CHANGE_TO_THE_OTHER_BOX:
                 if (won <= lost) {
-                    result = `Congratulations, you chose correct! You are statistically more likely to win if you change the boxes, however in this specific small sample size (${rowsCount} rows) the opposite happened. You won $${new Intl.NumberFormat('de-DE').format(won * 100000)}.`;
+                    result = `Congratulations, you chose correct! You are statistically 33% more likely to win if you change the boxes, however in this specific small sample size (${rowsCount} rows) the opposite happened. You won $${new Intl.NumberFormat('de-DE').format(won * 100000)}.`;
                 } else {
                     result = `Congratulations, you chose correct! You won $${new Intl.NumberFormat('de-DE').format(won * 100000)} ($${new Intl.NumberFormat('de-DE').format((won - lost) * 100000)} more, because you changed boxes)!`;
                 }
