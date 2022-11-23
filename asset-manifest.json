@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "https://kr1stjans.github.io/monty-hall/static/css/main.0c6fd9fb.css",
-    "main.js": "https://kr1stjans.github.io/monty-hall/static/js/main.02d71f21.js",
+    "main.js": "https://kr1stjans.github.io/monty-hall/static/js/main.51c6685d.js",
     "static/js/787.c615427f.chunk.js": "https://kr1stjans.github.io/monty-hall/static/js/787.c615427f.chunk.js",
     "index.html": "https://kr1stjans.github.io/monty-hall/index.html",
     "main.0c6fd9fb.css.map": "https://kr1stjans.github.io/monty-hall/static/css/main.0c6fd9fb.css.map",
-    "main.02d71f21.js.map": "https://kr1stjans.github.io/monty-hall/static/js/main.02d71f21.js.map",
+    "main.51c6685d.js.map": "https://kr1stjans.github.io/monty-hall/static/js/main.51c6685d.js.map",
     "787.c615427f.chunk.js.map": "https://kr1stjans.github.io/monty-hall/static/js/787.c615427f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0c6fd9fb.css",
-    "static/js/main.02d71f21.js"
+    "static/js/main.51c6685d.js"
   ]
 }
