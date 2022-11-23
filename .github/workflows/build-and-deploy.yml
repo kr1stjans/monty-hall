@@ -28,7 +28,7 @@ jobs:
         run: npm install
       
       - run: |
-          export PUBLIC_URL=''
+          export PUBLIC_URL='https://kr1stjans.github.io/monty-hall/'
           npm run build
       
       - name: Deploy 🚀
