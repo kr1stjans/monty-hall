@@ -28,7 +28,7 @@ jobs:
         run: npm install
       
       - run: |
-          export PUBLIC_URL=monty-hall
+          export PUBLIC_URL=''
           npm run build
       
       - name: Deploy 🚀
