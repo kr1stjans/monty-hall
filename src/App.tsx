@@ -18,7 +18,7 @@ enum Answer {
 }
 
 function App() {
-    const ROWS = 13;
+    const ROWS = 15;
 
     let initialBoxState = [];
 
