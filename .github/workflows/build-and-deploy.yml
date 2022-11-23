@@ -27,8 +27,8 @@ jobs:
       - name: Install dependencies
         run: npm install
       
-      - name: Build priject
-        run: npm run build
+      - run: export PUBLIC_URL=kr1stjans.github.io/monty-hall
+      - run: npm run build
       
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
