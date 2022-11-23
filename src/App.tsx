@@ -19,7 +19,7 @@ enum Answer {
 
 function App() {
     const [answer, setAnswer] = React.useState<Answer | undefined>(undefined);
-    const [rowsCount, setRowsCount] = React.useState<number>(20);
+    const [rowsCount, setRowsCount] = React.useState<number>(10);
 
     const [boxState, setBoxState] = React.useState<BoxRow[]>([]);
 
@@ -187,14 +187,16 @@ function App() {
     if (answer !== undefined) {
 
         switch (answer) {
+            case Answer.DOESNT_MATTER:
             case Answer.KEEP_THE_SAME:
-                result = `💩 Poop, you should have changed to the other boxes! You could have won $${new Intl.NumberFormat('de-DE').format(lost * 100000)} if you changed boxes, but now you only won ${new Intl.NumberFormat('de-DE').format(won * 100000)}! 💩`;
+                if (won >= lost) {
+                    result = `You got lucky and won $${new Intl.NumberFormat('de-DE').format(won * 100000)}, however you are statistically less likely to win, if you keep the same boxes!`;
+                } else {
+                    result = `💩 Poop, you should have changed to the other boxes! You could have won $${new Intl.NumberFormat('de-DE').format(lost * 100000)} if you changed boxes, but now you only won ${new Intl.NumberFormat('de-DE').format(won * 100000)}! 💩`;
+                }
                 break;
             case Answer.CHANGE_TO_THE_OTHER_BOX:
                 result = `Congratulations, you chose correct! You won $${new Intl.NumberFormat('de-DE').format(won * 100000)} ($${new Intl.NumberFormat('de-DE').format((won - lost) * 100000)} more, because you changed boxes)!`;
-                break;
-            case Answer.DOESNT_MATTER:
-                result = `💩 Poop! Of course it matters! You could have won $${new Intl.NumberFormat('de-DE').format(lost * 100000)} if you changed boxes, but now you only won ${new Intl.NumberFormat('de-DE').format(won * 100000)}! 💩`;
                 break;
 
         }
@@ -238,6 +240,7 @@ function App() {
                     <div className={"instruction"}>
                         <span>Number of rows:</span>
                         <select onChange={(e) => updateRowsCount(e)} value={rowsCount}>
+                            <option value={10}>10</option>
                             <option value={20}>20</option>
                             <option value={50}>50</option>
                             <option value={100}>100</option>
