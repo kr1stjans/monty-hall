@@ -1,17 +1,5 @@
-# Extended Monty Hall Challenge
+# Extended Monty Hall Problem
 
-### `npm start`
+I am fascinated by the Monty Hall Problem [1], but its hard to prove it to others, because you need a lot of examples to truly see that its better to switch your initial choice. Therefore I made a webpage where you can visually simulate the problem with a few clicks and clearly see that it is better to switch your initial choice. The page is hosted on Github Pages: https://kr1stjans.github.io/monty-hall/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[1] https://en.wikipedia.org/wiki/Monty_Hall_problem
